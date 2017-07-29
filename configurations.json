@@ -1,0 +1,24 @@
+{
+    "configuration": [{
+        "name": "Key 1",
+        "key": "key_1",
+        "value": "Dan sucks",
+        "description": "Some Description",
+        "type": "TEXT",
+        "id": 1
+    }, {
+        "name": "Key 2",
+        "key": "key_2",
+        "value": "<root>Fun with express</root>",
+        "description": "woohooo",
+        "type": "XML",
+        "id": 2
+    }, {
+        "name": "Key 3",
+        "key": "key_3",
+        "value": "Passwd@1",
+        "description": "dont tell anyone",
+        "type": "ENC_PASSWORD",
+        "id": 3
+    }]
+}

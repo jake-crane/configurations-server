@@ -21,13 +21,12 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const index = data.configuration.findIndex(
-        configuration => configuration.id == req.params.id
-    );
-    if (index !== -1)
-        res.status(400).send('Invalid id');
-    data.configuration.push(req.body);
-    res.status(204).send();
+    var newConfiguration = req.body;
+     if (Object.keys(newConfiguration).length !== 6)
+         res.status(400).send('Invalid property in data');
+    newConfiguration.id = Math.floor(Math.random() * 1000000) + 1;
+    data.configuration.push(newConfiguration);
+    res.status(200).send(newConfiguration);
 });
 
 router.put('/:id', (req, res) => {
@@ -36,6 +35,8 @@ router.put('/:id', (req, res) => {
     );
     if (index === -1 || req.params.id != req.body.id)
         res.status(400).send('Invalid id or ids do not match');
+    else if (Object.keys(req.body).length !== 6)
+        res.status(400).send('Invalid property in data');
     data.configuration[index] = req.body;
     res.status(204).send();
 });

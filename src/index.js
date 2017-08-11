@@ -22,8 +22,10 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     var newConfiguration = req.body;
-     if (Object.keys(newConfiguration).length !== 6)
-         res.status(400).send('Invalid property in data');
+    /*if (Object.keys(newConfiguration).length !== 5) {
+        res.status(400).send('Invalid property in data');
+        return;
+    }*/
     newConfiguration.id = Math.floor(Math.random() * 1000000) + 1;
     data.configuration.push(newConfiguration);
     res.status(200).send(newConfiguration);

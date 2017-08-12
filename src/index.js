@@ -17,7 +17,11 @@ router.use((req, res, next) => {
 
 router.get('/', (req, res) => {
     res.setHeader('CSRF_TOKEN', token);
-    res.send(data);
+    var resp = JSON.parse(JSON.stringify(data));
+    for (var config of resp.configuration)
+        if (config.type === 'ENC_PASSWORD')
+            config.value = '!@#$%^&*';
+    res.send(resp);
 });
 
 router.post('/', (req, res) => {

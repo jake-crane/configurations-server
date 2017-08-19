@@ -4,3 +4,7 @@ Thumbs.db
 
 # dependencies
 /node_modules
+
+/.build
+
+/awd-configurations.json

@@ -15,6 +15,7 @@
     "express": "^4.15.3"
   },
   "devDependencies": {
+    "eslint": "^4.5.0",
     "start-server-webpack-plugin": "^2.2.0",
     "webpack": "^3.5.5",
     "webpack-node-externals": "^1.6.0"

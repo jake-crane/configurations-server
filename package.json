@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
-    "debug": "node --inspect src/server.js ",
+    "start": "node ./src/server.js",
+    "debug": "node --inspect ./src/server.js ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Jake Crane",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -17,9 +17,6 @@
     "express-session": "^1.15.6"
   },
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "start-server-webpack-plugin": "^2.2.0",
-    "webpack": "^3.5.5",
-    "webpack-node-externals": "^1.6.0"
+    "eslint": "^4.5.0"
   }
 }

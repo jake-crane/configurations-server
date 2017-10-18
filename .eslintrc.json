@@ -1,4 +1,5 @@
 {
+    "root": true,
     "env": {
         "node": true,
         "commonjs": true,
@@ -12,10 +13,6 @@
         "indent": [
             "error",
             "tab"
-        ],
-        "linebreak-style": [
-            "warn",
-            "unix"
         ],
         "quotes": [
             "error",

@@ -77,7 +77,7 @@ app.use(session({
 }));
 app.use(fakeCsrf);
 app.use('/configurations', router);
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
 	res.status(err.status || 500).send(err.message);
 });
 

@@ -1,27 +1,27 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-var router = express.Router();
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var data = require('../configurations.json');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const router = express.Router();
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const data = require('../configurations.json');
 const fakeCsrf = require('./fake-csrf');
 
 
 router.get('/', (req, res) => {
-	var resp = JSON.parse(JSON.stringify(data));
-	for (var config of resp.configuration)
+	const resp = JSON.parse(JSON.stringify(data));
+	for (const config of resp.configuration)
 		if (config.type === 'ENC_PASSWORD')
 			config.value = '!@#$%^&*';
 	res.send(resp);
 });
 
 function validateConfiguration(config) {
-	var validKeys = ['id', 'key', 'name', 'value', 'description', 'type'];
-	var keys = Object.keys(config);
-	for (var key of keys) {
+	const validKeys = ['id', 'key', 'name', 'value', 'description', 'type'];
+	const keys = Object.keys(config);
+	for (const key of keys) {
 		if (!validKeys.includes(key)) {
-			var errorMessage = `Invalid property "${key}" in configuration`;
+			const errorMessage = `Invalid property "${key}" in configuration`;
 			console.error(errorMessage);
 			throw {
 				message: errorMessage,
@@ -32,20 +32,20 @@ function validateConfiguration(config) {
 }
 
 function getConfigFromReq(req) {
-	var config = req.body;
+	const config = req.body;
 	validateConfiguration(config);
 	return config;
 }
 
 router.post('/', (req, res) => {
-	var newConfiguration = getConfigFromReq(req);
+	const newConfiguration = getConfigFromReq(req);
 	newConfiguration.id = Math.floor(Math.random() * 1000000) + 1;
 	data.configuration.push(newConfiguration);
 	res.status(200).send(newConfiguration);
 });
 
 router.put('/:id', (req, res) => {
-	var config = getConfigFromReq(req);
+	const config = getConfigFromReq(req);
 	const index = data.configuration.findIndex(
 		configuration => configuration.id == req.params.id
 	);
@@ -81,6 +81,6 @@ app.use(function (err, req, res, next) {
 	res.status(err.status || 500).send(err.message);
 });
 
-var listener = app.listen(8000, () => {
+const listener = app.listen(8000, () => {
 	console.log('Server running at http://localhost:' + listener.address().port);
 });

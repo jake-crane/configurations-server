@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var router = express.Router();
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var data = require('../configurations.json');
 
 const token = Math.floor(Math.random() * 1000000) + 1;
@@ -76,6 +78,13 @@ router.delete('/:id', (req, res) => {
 });
 
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(session({
+    name: 'JSESSIONID',
+    secret: "Shh, its a secret!",
+    resave: true,
+    saveUninitialized: true 
+}));
 app.use('/configurations', router);
 app.use(function (err, req, res, next) {
 	res.status(err.status || 500).send(err.message);

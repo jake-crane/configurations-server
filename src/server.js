@@ -5,20 +5,10 @@ var router = express.Router();
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var data = require('../configurations.json');
+const fakeCsrf = require('./fake-csrf');
 
-const token = Math.floor(Math.random() * 1000000) + 1;
-
-router.use((req, res, next) => {
-	console.log('%s %s %s', req.method, req.url, req.path);
-	if (req.method === 'GET' || req.headers['csrf_token'] == token)
-		next();
-	else {
-		res.status(401).send('Invalid CSRF Token');
-	}
-});
 
 router.get('/', (req, res) => {
-	res.setHeader('CSRF_TOKEN', token);
 	var resp = JSON.parse(JSON.stringify(data));
 	for (var config of resp.configuration)
 		if (config.type === 'ENC_PASSWORD')
@@ -80,11 +70,12 @@ router.delete('/:id', (req, res) => {
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
-    name: 'JSESSIONID',
-    secret: "Shh, its a secret!",
-    resave: true,
-    saveUninitialized: true 
+	name: 'JSESSIONID',
+	secret: 'Shh, its a secret!',
+	resave: true,
+	saveUninitialized: true
 }));
+app.use(fakeCsrf);
 app.use('/configurations', router);
 app.use(function (err, req, res, next) {
 	res.status(err.status || 500).send(err.message);

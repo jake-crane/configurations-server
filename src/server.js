@@ -38,9 +38,7 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-	const index = data.configuration.findIndex(
-		configuration => configuration.id == req.params.id
-	);
+	const index = data.configuration.findIndex(config => config.id == req.params.id);
 	if (index === -1 || req.params.id != req.body.id) {
 		res.status(400).send('Invalid id or ids do not match');
 		return;
@@ -50,9 +48,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-	const index = data.configuration.findIndex(
-		(configuration) => configuration.id == req.params.id
-	);
+	const index = data.configuration.findIndex(config => config.id == req.params.id);
 	if (index === -1)
 		res.status(400).send('Invalid id');
 	data.configuration.splice(index, 1);

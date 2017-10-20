@@ -1,7 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const fakeCsrf = require('./fake-csrf');
 const jsonValidator = require('./json-validator');
 const data = require('../configurations.json');
@@ -9,13 +7,6 @@ const app = express();
 const router = express.Router();
 
 app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(session({
-	name: 'JSESSIONID',
-	secret: 'Shh, its a secret!',
-	resave: true,
-	saveUninitialized: true
-}));
 
 app.use(fakeCsrf);
 

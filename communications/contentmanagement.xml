@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentManagementSettings>
+    <device>mydevice</device>
+    <imageUrl>MachineIP</imageUrl>
+    <xfRenderingServer>serverip</xfRenderingServer>
+    <maxFileUploadSize>1048576</maxFileUploadSize>
+    <maxImageDpi>0</maxImageDpi>
+    <minImageDpi>0</minImageDpi>
+    <maxImagePixels>0</maxImagePixels>
+    <minImagePixels>0</minImagePixels>
+</contentManagementSettings>

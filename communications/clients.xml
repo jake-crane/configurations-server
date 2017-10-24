@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clientDetails>
+    <clientDetail href="client/1">
+        <id>1</id>
+        <name>Parent1</name>
+        <thirdParty>false</thirdParty>
+        <billingId></billingId>
+    </clientDetail>
+</clientDetails>

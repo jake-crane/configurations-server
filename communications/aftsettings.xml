@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<aftSettings>
+    <address>127.0.0.1</address>
+    <port>2000</port>
+    <filePath>mydir/</filePath>
+    <userId>jake</userId>
+    <password>********************************</password>
+</aftSettings>

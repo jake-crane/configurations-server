@@ -5,6 +5,7 @@ const jsonValidator = require('./json-validator');
 const data = require('../configurations.json');
 const app = express();
 const router = express.Router();
+const communicationsRouter = require('./communications');
 
 app.use(bodyParser.json());
 
@@ -54,3 +55,5 @@ router.delete('/:id', (req, res) => {
 	data.configuration.splice(index, 1);
 	res.status(204).send();
 });
+
+app.use('/communications', communicationsRouter);

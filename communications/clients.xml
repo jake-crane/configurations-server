@@ -4,6 +4,6 @@
         <id>1</id>
         <name>Parent1</name>
         <thirdParty>false</thirdParty>
-        <billingId></billingId>
+        <billingId>billingid</billingId>
     </clientDetail>
 </clientDetails>

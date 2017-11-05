@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ftpSettings>
-    <id></id>
-    <address></address>
+    <id>2</id>
+    <address>aaa</address>
     <port>21</port>
-    <user></user>
-    <password></password>
+    <user>user</user>
+    <password>aaaaa</password>
     <ftppath>.</ftppath>
 </ftpSettings>
